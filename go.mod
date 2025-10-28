@@ -1,3 +1,3 @@
 module github.com/platonoff-dev/corekv
 
-go 1.22
+go 1.25

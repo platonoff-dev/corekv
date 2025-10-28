@@ -1,0 +1,72 @@
+version: '3'
+vars:
+  module: "github.com/platonoff-dev/corekv"
+  goargs: "./..."
+
+tasks:
+  build:
+    desc: "Build the project"
+    cmds:
+      - go build -v {{.module}}/...
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - go test -v -race -coverprofile=coverage.out {{.goargs}}
+
+  test-coverage:
+    desc: "Run tests with coverage report"
+    cmds:
+      - task: test
+      - go tool cover -html=coverage.out -o coverage.html
+
+  lint:
+    desc: "Run linters"
+    cmds:
+      - golangci-lint run ./...
+
+  fmt:
+    desc: "Format code"
+    cmds:
+      - go fmt ./...
+      - goimports -w -local {{.module}} .
+
+  vet:
+    desc: "Run go vet"
+    cmds:
+      - go vet ./...
+
+  clean:
+    desc: "Clean build artifacts"
+    cmds:
+      - go clean
+      - rm -f coverage.out coverage.html
+
+  install-tools:
+    desc: "Install development tools"
+    cmds:
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      - go install golang.org/x/tools/cmd/goimports@latest
+
+  install-hooks:
+    desc: "Install pre-commit hooks"
+    cmds:
+      - "if command -v pre-commit >/dev/null 2>&1; then pre-commit install; echo \"Pre-commit hooks installed successfully\"; else echo \"pre-commit is not installed. Install it with: pip install pre-commit\"; exit 1; fi"
+
+  mod-tidy:
+    desc: "Tidy go.mod"
+    cmds:
+      - go mod tidy
+
+  mod-verify:
+    desc: "Verify dependencies"
+    cmds:
+      - go mod verify
+
+  all:
+    desc: "Run all checks and build"
+    cmds:
+      - task: fmt
+      - task: lint
+      - task: test
+      - task: build

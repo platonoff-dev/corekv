@@ -24,9 +24,10 @@ go run cmd/corekv/main.go
 
 ### Prerequisites
 
-- Go 1.22 or higher
+- Go 1.25 or higher
 - golangci-lint (for linting)
 - pre-commit (for pre-commit hooks)
+- Task (https://taskfile.dev/) - optional but recommended (used via Taskfile.yml)
 
 ### Setup
 
@@ -38,24 +39,36 @@ cd corekv
 
 2. Install development tools:
 ```bash
-make install-tools
+# Prefer Task if installed
+if command -v task >/dev/null 2>&1; then
+  task install-tools
+else
+  make install-tools
+fi
 ```
 
 3. Install pre-commit hooks:
 ```bash
 pip install pre-commit  # if not already installed
-make install-hooks
+# Prefer Task if installed
+if command -v task >/dev/null 2>&1; then
+  task install-hooks
+else
+  make install-hooks
+fi
 ```
 
-### Available Make Commands
+### Available development tasks
 
-- `make build` - Build the project
-- `make test` - Run tests
-- `make test-coverage` - Run tests with coverage report
-- `make lint` - Run linters
-- `make fmt` - Format code
-- `make clean` - Clean build artifacts
-- `make all` - Run all checks and build
+This project provides a `Taskfile.yml` (Task) and a `Makefile` for backward compatibility. Prefer `task` when available.
+
+- `task build` - Build the project
+- `task test` - Run tests
+- `task test-coverage` - Run tests with coverage report
+- `task lint` - Run linters
+- `task fmt` - Format code
+- `task clean` - Clean build artifacts
+- `task all` - Run all checks and build
 
 ## Project Structure
 
