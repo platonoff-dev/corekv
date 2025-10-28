@@ -1,5 +1,12 @@
 # CoreKV
 
+[![CI](https://github.com/platonoff-dev/corekv/actions/workflows/ci.yml/badge.svg)](https://github.com/platonoff-dev/corekv/actions/workflows/ci.yml)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/platonoff-dev/corekv)](https://github.com/platonoff-dev/corekv)
+[![Go Report Card](https://goreportcard.com/badge/github.com/platonoff-dev/corekv)](https://goreportcard.com/report/github.com/platonoff-dev/corekv)
+[![Go Reference](https://pkg.go.dev/badge/github.com/platonoff-dev/corekv.svg)](https://pkg.go.dev/github.com/platonoff-dev/corekv)
+[![codecov](https://codecov.io/gh/platonoff-dev/corekv/branch/main/graph/badge.svg)](https://codecov.io/gh/platonoff-dev/corekv)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Simple small persistent key-value database written in Go.
 
 ## Features
