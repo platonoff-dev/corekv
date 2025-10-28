@@ -24,7 +24,7 @@ go run cmd/corekv/main.go
 
 ### Prerequisites
 
-- Go 1.21 or higher
+- Go 1.22 or higher
 - golangci-lint (for linting)
 - pre-commit (for pre-commit hooks)
 
