@@ -101,7 +101,7 @@ func (e *Engine) Get(key []byte) ([]byte, error) {
 	return data, nil
 }
 
-func (e *Engine) Delete(key []byte) error {
+func (e *Engine) Delete(_ []byte) error {
 	return nil
 }
 
